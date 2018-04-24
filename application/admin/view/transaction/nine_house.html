@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+{include file="./layout/head" /}
+
+<body class="kit-theme">
+
+<div class="demoTable">
+
+    <div class="layui-inline">
+        <input class="layui-input" name="keywords" id="demoReload" placeholder="搜索姓名、手机号" autocomplete="off">
+    </div>
+    <button class="layui-btn" data-type="reload">搜索</button>
+</div>
+
+<table class="layui-table" lay-data="{id:'idTest',height:'full', url:'{:url('admin/transaction/house')}', page:true}" lay-filter="demo">
+    <thead>
+         <tr>
+            <th lay-data="{field:'id', width:80, sort: true, fixed: true}">ID</th>
+            <th lay-data="{field:'charge_date', width:140,sort: true}">汇款时间</th>
+            <th lay-data="{field:'wait_time',sort: true, width:140, sort: true}">排单日期</th>
+            <th lay-data="{field:'str_code', width:150,sort: true}">排单号</th>
+            <th lay-data="{field:'name', width:100, sort: true}">姓名</th>
+            <th lay-data="{field:'amount', width:100, sort: true}">金额</th>
+             <th lay-data="{field:'bank_username', width:120, sort: true}">持卡人姓名</th>
+            <th lay-data="{field:'bank_name', width:180, sort: true}">银行</th>
+            <th lay-data="{field:'bank_account_number', width:180, sort: true}">银行卡</th>
+            <th lay-data="{field:'yun_id', width:120, sort: true}">云联惠ID</th>
+            <th lay-data="{field:'bind_mobile', width:120, sort: true}">云联惠手机号</th>
+            <th lay-data="{field:'share_username', width:120}">分享人</th>
+            <th lay-data="{field:'share_yun_id', width:120, sort: true}">分享人ID</th>
+             <th lay-data="{field:'agency_name', width:120, sort: true}">办事处</th>
+            <th lay-data="{field:'share_usermobile', width:120, sort: true}">分享人云联惠手机号</th>
+            <th lay-data="{field:'isfull', width:120, sort: true}">是否满资格</th>
+            <th lay-data="{field:'expired', width:120,sort: true}">到期时间</th>
+            <th lay-data="{field:'remarks', width:220}">备注</th>
+            <th lay-data="{fixed: 'right', width:220, align:'center', toolbar: '#barDemo'}">操作</th>
+    </tr>
+    </thead>
+    <script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-mini" lay-event="show">查看</a>
+</script>
+</table>
+<script>
+    layui.use('table', function() {
+        var table = layui.table;
+
+        //监听工具条
+        table.on('tool(demo)', function(obj){
+            var data = obj.data;
+
+             if(obj.event === 'show'){
+                location.href = '{:url("admin/member/show")}'+'?id='+data.id;
+            }
+        });
+         var $ = layui.$, active = {
+            reload: function(){
+                var demoReload = $('#demoReload');
+
+                table.reload('idTest', {
+                    where: {
+                        search: demoReload.val(),
+                        id: demoReload.val()
+                    }
+                });
+            }
+        };
+
+        $('.demoTable .layui-btn').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+
+</script>
+</body>
+</html>

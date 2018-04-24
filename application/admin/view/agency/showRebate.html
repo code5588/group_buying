@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+{include file="./layout/head" /}
+<script rel="stylesheet" src="/static/DatePicker.js"></script>
+
+<body class="kit-theme">
+<div class="demoTable">
+	<form class="layui-form" action="{:url('admin/agency/showRebate')}" method="POST">
+		<div class="layui-inline">
+			选择日期： <input id="searchTime" name="searchTime" type="text" onclick="setmonth(this)" readonly="readonly"  value="{$searchTime}" />
+			<input type="hidden" name="id" value="{$id}"/>
+		</div>
+		<button type="submit" class="layui-btn" data-type="reload">搜索</button>
+	</form>
+</div>
+<table class="layui-table">
+	<thead>
+		<tr>
+			<th>2%</th>
+			<th>6%</th>
+			<th>操作</th>
+		</tr>
+		<tr>
+			<td>
+				{$agencyTotalPoint1}</br>
+				发放日期：{$time1} 
+			</td>
+			<td>
+				{$agencyTotalPoint2}</br>
+				发放日期：{$time2}
+			</td>
+			<td>	
+				{if $agencyTotalPoint1 || $agencyTotalPoint2}
+				<a href="show/id/{$id}/searchTime/{$searchTime}">查看明细</a>	
+				{/if}
+			</td>
+		</tr>
+	</thead>
+</table>
+</body>
+</html>

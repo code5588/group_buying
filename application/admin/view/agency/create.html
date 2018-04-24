@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+{include file="./layout/head" /}
+
+<body class="kit-theme">
+<form class="layui-form" action="{:url('admin/agency/create')}" method="post">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">办事处名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="agency_name" lay-verify="required" placeholder="请输入办事处名称" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+            <a href="{:url('admin/agency/showlist')}" class="layui-btn" >返回</a>
+        </div>
+    </div>
+</form>
+<script type="application/javascript">
+    layui.use('form', function(){
+        var form = layui.form;
+        form.on('submit(*)', function(data){
+            setTimeout(
+                function () {
+                    layer.load(0, { shade: [0.3, '#333'] });
+                },
+                10
+            )
+
+            return true
+        });
+    });
+
+
+
+</script>
+</body>
+</html>

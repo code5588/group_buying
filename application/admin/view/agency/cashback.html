@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+{include file="./layout/head" /}
+
+<body class="kit-theme">
+
+<div class="demoTable">
+    <form class="layui-form" action="{:url('admin/agency/cashback')}" method="get">
+    <div class="layui-inline">
+        <select name="month" lay-verify="required" lay-search="">
+            <option value="">直接选择或搜索选择</option>
+            {volist name="months" id="vo"}
+            <option value="{$vo|date='Y-m',###}" {$month==date('Y-m',$vo)?'selected="selected"':''}>{$vo|date='Y-m',###}</option>
+            {/volist}
+        </select>
+    </div>
+    <button type="submit" class="layui-btn" data-type="reload">搜索</button>
+    </form>
+</div>
+{if condition="!empty($month)"}
+<table id="demo"></table>
+{/if}
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
+
+        //展示已知数据
+        table.render({
+            elem: '#demo'
+            ,data: {$agency|json_encode}
+            ,height: 272
+            ,cols: [[ //标题栏
+                {field: 'agency_id', title: 'ID', width: 80, sort: true}
+                ,{field: 'agency_name', title: '办事处', width: 120}
+                ,{field: 'total', title: '总充值', width: 150, sort: true}
+                ,{field: 'cashback', title: '提成', width: 150, sort: true}
+            ]]
+            ,skin: 'row' //表格风格
+        });
+    });
+</script>
+</body>
+</html>

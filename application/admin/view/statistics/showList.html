@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+{include file="./layout/head" /}
+<script src="http://blog.gdfengshuo.com/example/sChart/static/js/sChart.min.js"></script>
+<body class="kit-theme">
+	<div style="float: right; margin-left: 0px;">
+  		<canvas id="counts" width="500" height="350"/>
+  	</div>
+  	 <div>
+		<canvas id="amount" width="500" height="350"/>
+	</div>
+	<div class="layui-form-item" style="margin-top: 50px;">
+			<label class="layui-form-label" style="width: 120px;">90天购车：</label>
+			<div class="layui-input-inline">
+			   累计总金额： <input type="text"    readonly = "readonly" value="{if $car.amount }{$car.amount}{else}0{/if}" class="layui-input"></br>
+			   累计单量： <input type="text"    readonly = "readonly" value="{if $car.count }{$car.count}{else}0{/if}" class="layui-input" >
+			</div>
+			<div class="layui-input-inline" style="margin-left: 30px;">
+			   累计返还总金额： <input type="text"    readonly = "readonly" value="{if $carFull.amount }{$carFull.amount}{else}0{/if}" class="layui-input"></br>
+			   累计返还单量： <input type="text"    readonly = "readonly" value="{if $carFull.count }{$carFull.count}{else}0{/if}" class="layui-input">
+			</div>
+			<div class="layui-input-inline" style="margin-left: 30px;">
+			   今日总金额： <input type="text"    readonly = "readonly" value="{if  $todayCar.amount}{$todayCar.amount}{else}0{/if}" class="layui-input"></br>
+			   今日单量： <input type="text"    readonly = "readonly" value="{if $todayCar.count}{$todayCar.count}{else}0{/if}" class="layui-input">
+			</div>
+			 <div class="layui-input-inline" style="margin-left: 30px;">
+			   今日返还总金额： <input type="text"    readonly = "readonly" value="{if  $carToDayFull.amount}{$carToDayFull.amount}{else}0{/if}" class="layui-input"></br>
+			   今日返还单量： <input type="text"    readonly = "readonly" value="{if $carToDayFull.count}{$carToDayFull.count}{else}0{/if}" class="layui-input">
+			</div>
+
+	 </div>
+	 <div class="layui-form-item" style="margin-top: 30px;">
+			<label class="layui-form-label" style="width: 120px;">90天购房：</label>
+			<div class="layui-input-inline" >
+			   累计总金额： <input type="text"    readonly = "readonly" value="{if $house.amount}{$house.amount}{else}0{/if}" class="layui-input"></br>
+			   累计单量： <input type="text"    readonly = "readonly" value="{if $house.count}{$house.count}{else}0{/if}" class="layui-input">
+			</div>
+			 <div class="layui-input-inline" style="margin-left: 30px;">
+			   累计返还总金额： <input type="text"    readonly = "readonly" value="{if $houseFull.amount}{$houseFull.amount}{else}0{/if}" class="layui-input"></br>
+			   累计返还单量： <input type="text"    readonly = "readonly" value="{if $houseFull.count}{$houseFull.count}{else}0{/if}" class="layui-input">
+			</div>
+			<div class="layui-input-inline" style="margin-left: 30px;">
+			   今日总金额： <input type="text"    readonly = "readonly" value="{if $todayHouse.amount}{$todayHouse.amount}{else}0{/if}" class="layui-input"></br>
+			   今日单量： <input type="text"    readonly = "readonly" value="{if $todayHouse.count}{$todayHouse.count}{else}0{/if}" class="layui-input">
+			</div>
+			 <div class="layui-input-inline" style="margin-left: 30px;">
+			   今日返还总金额： <input type="text"    readonly = "readonly" value="{if $houseToDayFull.amount}{$houseToDayFull.amount}{else}0{/if}" class="layui-input"></br>
+			   今日返还单量： <input type="text"    readonly = "readonly" value="{if $houseToDayFull.count}{$houseToDayFull.count}{else}0{/if}" class="layui-input">
+			</div>
+	 </div>
+	  <div class="layui-form-item" style="margin-top: 30px;">
+			<label class="layui-form-label" style="width: 120px;">180天购车购房：</label>
+			<div class="layui-input-inline">
+			   累计总金额： <input type="text"    readonly = "readonly" value="{if $all.amount}{$all.amount}{else}0{/if}" class="layui-input"></br>
+			   累计单量： <input type="text"    readonly = "readonly" value="{if $all.count}{$all.count}{else}0{/if}" class="layui-input">
+			</div>
+			<div class="layui-input-inline" style="margin-left: 30px;">
+			   累计返还总金额： <input type="text"    readonly = "readonly" value="{if $allFull.amount}{$allFull.amount}{else}0{/if}" class="layui-input"></br>
+			   累计返还单量： <input type="text"    readonly = "readonly" value="{if $allFull.count}{$allFull.count}{else}0{/if}" class="layui-input">
+			</div>
+			<div class="layui-input-inline" style="margin-left: 30px;">
+			   今日总金额： <input type="text"    readonly = "readonly" value="{if $todayAll.amount}{$todayAll.amount}{else}0{/if}" class="layui-input"></br>
+			   今日单量： <input type="text"    readonly = "readonly" value="{if $todayAll.count}{$todayAll.count}{else}0{/if}" class="layui-input">
+			</div>
+			<div class="layui-input-inline" style="margin-left: 30px;">
+			   今日返还总金额： <input type="text"    readonly = "readonly" value="{if $allToDayFull.amount}{$allToDayFull.amount}{else}0{/if}" class="layui-input"></br>
+			   今日返还单量： <input type="text"    readonly = "readonly" value="{if $allToDayFull.count}{$allToDayFull.count}{else}0{/if}" class="layui-input">
+			</div>
+	 </div>
+	
+  <script type="text/javascript">
+   var amount_data = [
+	{name:'90购车总金额', value:{$car.amount}},
+	{name:'90购房总金额', value:{$house.amount}},
+	{name:'180天购车购房总金额', value:{$all.amount}},
+  ];
+  var count_data = [
+	{name:'90购车累计单量', value:{$car.count}},
+	{name:'90购房累计单量', value:{$house.count}},
+	{name:'180天购车购房累计单量', value:{$all.count}},
+  ];
+amount_options = {
+	bgColor: '#ffffff',             // 默认背景颜色
+	title: '总金额比例',                      // 图表标题
+	titleColor: '#000000',          // 图表标题颜色
+	titlePosition: 'top',            // 图表标题位置: top / bottom
+	legendColor: '#000000',         // 图例文本颜色
+	legendTop: 40,                  // 图例距离顶部的长度
+	colorList: ['#1E9FFF', '#13CE66', '#F7BA2A', '#FF4949', '#72f6ff'],    // 饼图颜色列表
+	radius: 80,                    // 饼图半径
+}
+count_options = {
+	bgColor: '#ffffff',             // 默认背景颜色
+	title: '累计单量比例',                      // 图表标题
+	titleColor: '#000000',          // 图表标题颜色
+	titlePosition: 'top',            // 图表标题位置: top / bottom
+	legendColor: '#000000',         // 图例文本颜色
+	legendTop: 40,                  // 图例距离顶部的长度
+	colorList: ['#1E9FFF', '#13CE66', '#F7BA2A', '#FF4949', '#72f6ff'],    // 饼图颜色列表
+	radius: 80,                    // 饼图半径
+}
+new sChart('counts', 'pie', count_data, count_options);
+new sChart('amount', 'pie', amount_data, amount_options);
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+{include file="./layout/head" /}
+<script rel="stylesheet" src="/static/DatePicker.js"></script>
+<body class="kit-theme">
+<div class="demoTable">
+	<form class="layui-form" action="{:url('admin/share/show')}" method="POST">
+		<div class="layui-inline">
+			选择日期： <input id="searchTime" name="searchTime" type="text" onclick="setmonth(this)" readonly="readonly"  value="{$searchTime}" />
+			<input type="hidden" name="id" value="{$id}"/>
+		</div>
+		<button type="submit" class="layui-btn" data-type="reload">搜索</button>
+	</form>
+</div>
+分享明细：
+<table class="layui-table" lay-data="{id:'idTest',height:'full', url:'{:url('admin/share/show',['id'=>$id,'searchTime'=>$searchTime])}', page:true}" lay-filter="demo">
+	<thead>
+	<tr>
+		<th lay-data="{field:'name', width:120}">姓名</th>
+		<th lay-data="{field:'mobile', width:120}">手机号</th>
+		<th lay-data="{field:'yun_id', width:120}">云联惠ID</th>
+		<th lay-data="{field:'type', width:120}">购买类型</th>
+		 <th lay-data="{field:'charge_date', width:120}">汇款日期</th>
+		<th lay-data="{field:'wait_time', width:120}">排单日期</th>
+		<th lay-data="{field:'str_code', width:120}">排单号</th>
+		<th lay-data="{field:'point', width:120}">返积分</th>
+		<th lay-data="{field:'point_time', width:120}">返积分日期</th>
+	</tr>
+	</thead>
+</table>
+</body>
+</html>

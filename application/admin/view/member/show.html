@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+{include file="./layout/head" /}
+<body class="kit-theme">
+
+	<div class="layui-form-item">
+		<label class="layui-form-label">申报人</label>
+		<div class="layui-input-block">
+			<input type="text" name="name"  readonly = "readonly" value="{$member.name}" class="layui-input">
+		</div>
+	</div>
+
+	<div class="layui-form-item">
+		<label class="layui-form-label">手机</label>
+		<div class="layui-input-block">
+			<input type="tel" name="mobile" readonly = "readonly" value="{$member.mobile}" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">云联惠ID</label>
+		<div class="layui-input-block">
+			<input type="text" name="yun_id"  readonly = "readonly" value="{$member.yun_id}" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">云联惠绑定手机号</label>
+		<div class="layui-input-block">
+			<input type="tel" name="bind_mobile" readonly = "readonly" value="{$member.bind_mobile}" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">汇款金额</label>
+		<div class="layui-input-block">
+			<input type="tel" name="amount" readonly = "readonly" value="{$member.amount}" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">汇款日期</label>
+		<div class="layui-input-block">
+			<input type="text" name="charge_date"  id="date" readonly = "readonly" value="{$member.charge_date}" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">付款方式</label>
+		<div class="layui-input-block">
+			<input type="tel" name="payment" readonly = "readonly" value="{$member.payment}" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">身份证号</label>
+		<div class="layui-input-block">
+			<input type="tel" name="idcard" readonly = "readonly" value="{$member.idcard}" class="layui-input">
+		</div>
+	</div>
+	<!--<div class="layui-form-item">-->
+		<!--<label class="layui-form-label">会员状态</label>-->
+		<!--<div class="layui-input-block">-->
+			<!--<input type="checkbox" checked name="status" lay-skin="switch" lay-text="ON|OFF" value="1">-->
+		<!--</div>-->
+	<!--</div>-->
+	<div class="layui-form-item">
+		<label class="layui-form-label">开户名</label>
+		<div class="layui-input-inline">
+			<input type="text" name="bank_username"  readonly = "readonly" value="{$member.bank_username}" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">开户行</label>
+		<div class="layui-input-block">
+			<!--<input type="text" name="bank_name"  autocomplete="off" placeholder="请输入开户行" class="layui-input">-->
+			<select disabled >
+				{volist name='bank' id='vo'}
+				<option value=''>--请选择--</option>
+				<option value="{$vo.bank_id}"   {if condition="$vo['bank_id'] eq $member['bank_name']" } selected {/if} >{$vo.bank_name}</option>
+				{/volist}
+			</select>
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">支行</label>
+		<div class="layui-input-block">
+			<input type="text" name="bank_branch"   placeholder="请输入支行" class="layui-input" value="{$member.bank_branch}">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">账号</label>
+		<div class="layui-input-block">
+			<input type="text" name="bank_account_number" readonly = "readonly" value="{$member.bank_account_number}" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">购买类型</label>
+		<div class="layui-input-block">
+			<select name="type" disabled lay-verify="required">
+				<option value="1" {if condition="$member['type'] eq 1"}selected{/if}>90天购车</option>
+				<option value="2" {if condition="$member['type'] eq 2"}selected{/if}>90天购房</option>
+				<option value="3" {if condition="$member['type'] eq 3"}selected{/if}>180天购房购车</option>
+			</select>
+		</div>
+	</div>
+	<span>办事处及推荐人信息</span>
+	<div class="layui-form-item">
+		<label class="layui-form-label">办事处名称</label>
+			<div class="layui-input-block">
+			  <select disabled>
+				<option>--请选择--</option>
+				{volist name='agency' id='vo'}
+				<option value="{$vo.agency_id}" {if condition="$vo['agency_id'] eq $member['agency_id']"} selected{/if}>{$vo.agency_name}</option>
+				{/volist}
+			</select>
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">直接分享人</label>
+		<div class="layui-input-block">
+			<input type="text" name="share_username"  readonly = "readonly" value="{$member.share_username}" class="layui-input" >
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">分享人云联惠ID</label>
+		<div class="layui-input-block">
+			<input type="text" name="share_yun_id"  readonly = "readonly" value="{$member.share_yun_id}" class="layui-input" >
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">绑定手机号</label>
+		<div class="layui-input-block">
+			<input type="text" name="share_usermobile"  readonly = "readonly" value="{$member.share_usermobile}" class="layui-input" >
+		</div>
+	</div>
+<div class="layui-form-item">
+		<label class="layui-form-label">备注</label>
+		<div class="layui-input-block">
+			<input type="text"    autocomplete="off"   readonly = "readonly" class="layui-input" value="{$member.remarks}">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">1.6倍积分</label>
+		<div class="layui-input-block">
+			<input type="radio" disabled="disabled"   {if condition="$member['extra_point']  eq 5000 "} checked {/if}    title="是" /> 是
+			<input type="radio"   disabled="disabled"  {if condition="$member['extra_point']  neq 5000 "} checked {/if}  title='否'/>否
+		</div>
+	</div>
+</body>
+</html>

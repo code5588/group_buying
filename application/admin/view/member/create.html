@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+{include file="./layout/head" /}
+
+<body class="kit-theme">
+<form class="layui-form" action="{:url('admin/member/create')}" method="post" onsubmit="return check();">
+
+	<div class="layui-form-item">
+		<label class="layui-form-label">申报人</label>
+		<div class="layui-input-block">
+			<input type="text" name="name" id="name" placeholder="请输入姓名"  class="layui-input">
+		</div>
+	</div>
+
+	<div class="layui-form-item">
+		<label class="layui-form-label">手机</label>
+		<div class="layui-input-block">
+			<input type="text" name="mobile" id = "mobile"  class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">云联惠ID</label>
+		<div class="layui-input-block">
+			<input type="text" name="yun_id" id = "yun_id"   placeholder="请输入云联惠ID" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">云联惠绑定手机号</label>
+		<div class="layui-input-block">
+			<input type="text" name="bind_mobile" id = "bind_mobile" class="layui-input" >
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">汇款金额</label>
+		<div class="layui-input-block">
+			<input type="text" name="amount" id = "amount" class="layui-input" >
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">汇款日期</label>
+		<div class="layui-input-block">
+			<input type="text" name="charge_date"  id="date"  placeholder="请选择日期" value="{:date('Y-m-d H:i:s')}" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">付款方式</label>
+		<div class="layui-input-block">
+			<input type="text" name="payment" id = "payment" class="layui-input" >
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">身份证号</label>
+		<div class="layui-input-block">
+			<input type="text" name="idcard" id = "idcard" class="layui-input" >
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">开户名</label>
+		<div class="layui-input-inline">
+			<input type="text" name="bank_username" id = "bank_username" placeholder="请输开户名" class="layui-input" >
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">开户行</label>
+		<div class="layui-input-block">
+			<select name="bank_name" id = "bank_name">
+				<option value="0">--请选择--</option>
+				{volist name='bank' id='vo'}
+				<option value="{$vo.bank_id}">{$vo.bank_name}</option>
+				{/volist}
+			</select>
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">支行</label>
+		<div class="layui-input-block">
+			<input type="text" name="bank_branch"   placeholder="请输入支行" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">账号</label>
+		<div class="layui-input-block">
+			<input type="text" name="bank_account_number" id = "bank_account_number"   placeholder="请输入银行卡号" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">购买类型</label>
+		<div class="layui-input-block">
+			<select name="type" id = "type">
+				<option value="3">180天购房购车</option>
+				<option value="2">90天购房</option>
+				<option value="1">90天购车</option>
+				
+			</select>
+		</div>
+	</div>
+	<span>办事处及推荐人信息</span>
+	<div class="layui-form-item">
+		<label class="layui-form-label">办事处</label>
+		<div class="layui-input-block">
+			 <select name="agency_id" id = "agency_id" >
+				<option value=''>--请选择--</option>
+				{volist name='agency' id='vo'}
+				<option value="{$vo.agency_id}">{$vo.agency_name}</option>
+				{/volist}
+			</select>
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">直接分享人</label>
+		<div class="layui-input-block">
+			<input type="text" name="share_username"  id = "share_username" placeholder="请输入直接分享人" class="layui-input" >
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">分享人云联惠ID</label>
+		<div class="layui-input-block">
+			<input type="text" name="share_yun_id" id = "share_yun_id"   placeholder="请输入分享人云联惠ID" class="layui-input" >
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">绑定手机号</label>
+		<div class="layui-input-block">
+			<input type="text" name="share_usermobile" id="share_usermobile"   placeholder="请输入绑定手机号" class="layui-input" >
+		</div>
+	</div>
+ <div class="layui-form-item">
+		<label class="layui-form-label">排单时间</label>
+		<div class="layui-input-block">
+			<input type="text" name="wait_time"  id="wait_time"  placeholder="请选择日期" value="" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">备注</label>
+		<div class="layui-input-block">
+			<input type="text" name="remarks"   autocomplete="off" placeholder="备注" class="layui-input" />
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">1.6倍积分金额</label>
+		<div class="layui-input-block">
+			<input type="radio" name="extra_point"   value = '1' title="是" />
+			<input type="radio" name="extra_point"   value = '2' title='否'  checked />
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-input-block">
+			<button class="layui-btn" lay-submit="" lay-filter="demo1" id = 'sub'>提交</button>
+			<a href="{:url('admin/member/showlist')}" class="layui-btn" >返回</a>
+		</div>
+	</div>
+</form>
+<script type="application/javascript">
+	layui.use('form', function(){
+		var form = layui.form;
+		form.on('submit(*)', function(data){
+			setTimeout(
+				function () {
+					layer.load(0, { shade: [0.3, '#333'] });
+				},
+				10
+			)
+
+			return true
+		});
+	});
+
+layui.use('laydate', function(){
+  var laydate = layui.laydate;
+  
+  //执行一个laydate实例
+  laydate.render({
+	elem: '#date' ,
+	type: 'datetime'//指定元素
+  });
+
+  laydate.render({
+	elem: '#wait_time' ,
+	type: 'datetime'//指定元素
+  });
+});
+
+function check(){
+		var name = document.getElementById("name").value;
+		var mobile = document.getElementById("mobile").value;
+		var yun_id = document.getElementById("yun_id").value;
+		var bind_mobile = document.getElementById("bind_mobile").value;
+		var amount = document.getElementById("amount").value;
+		var date = document.getElementById("date").value;
+		var payment = document.getElementById("payment").value;
+		var idcard = document.getElementById("idcard").value;
+		var bank_username = document.getElementById("bank_username").value;
+		var bank_name = document.getElementById("bank_name").value;
+		var bank_account_number = document.getElementById("bank_account_number").value;
+		var type = document.getElementById("type").value;
+		var agency_id = document.getElementById("agency_id").value;
+		var share_username = document.getElementById("share_username").value;
+		var share_yun_id = document.getElementById("share_yun_id").value;
+		var share_usermobile = document.getElementById("share_usermobile").value;
+
+		var reg_mobile = /^[0-9]*[1-9][0-9]*$/;
+
+		if(name == ''){
+			alert('请输入申报人');
+			return false;
+		}else if(mobile == '' || !reg_mobile.test(mobile) || mobile.length != 11){
+			alert('申报人手机号不正确');
+			return false;
+		}
+		// else if(yun_id == '' ){
+		// 	alert('云联惠id不能不为空');
+		// 	return false;
+		// }else if(bind_mobile == '' || !reg_mobile.test(mobile) || mobile.length != 11){
+		// 	alert('绑定云联惠手机号不正确');
+		// 	return false;
+		// }
+		else if(amount == '' || !reg_mobile.test(amount)){
+			alert('金额必须是数字');
+			return false;
+		}else if(date == ''){
+			alert('请选择汇款日期');
+			return false;
+		}
+		// else if(agency_id == ''){
+		//     alert('请选择办事处');
+		//     return false;
+		// }
+		// else if(share_yun_id == ''){
+		//     alert('请填写分享人云联惠ID');
+		//     return false;
+		// }
+		else{
+			return true;
+		}
+	}
+</script>
+<script type="text/javascript">
+	$("#yun_id").click(function(){
+		var name=$('#name').val();
+		var mobile = $('#mobile').val();
+
+		$.ajax({
+			url:'ajaxUserInfo',
+			type:"POST",
+			data:{'name':name,'mobile':mobile},
+			success:function(data){
+				if(data.code == 0){
+					 $("#yun_id").val(data.data[0].yun_id);
+					 $("#bind_mobile").val(data.data[0].bind_mobile);				
+				}
+				
+			}
+			
+		});
+	});
+</script>
+</body>
+</html>

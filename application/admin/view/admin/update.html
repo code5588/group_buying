@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+{include file="./layout/head" /}
+
+<body class="kit-theme">
+<form class="layui-form" action="{:url('admin/admin/update',['id'=>$admin['id']])}" method="post">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+            <input type="text" name="username" lay-verify="required" value="{$admin.username}" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">修改密码</label>
+        <div class="layui-input-block">
+            <input type="checkbox" id="is_pwd"  name="is_pwd" lay-skin="switch" lay-filter="passwd" lay-text="ON|OFF" value="1">
+        </div>
+    </div>
+
+    <div class="layui-form-item" id="pdiv" style="display: none;">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-block">
+            <input type="password" name="password"  id="password" value="" placeholder="请输入密码" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    {if condition = "$admin['is_super'] neq 1"}
+    <div class="layui-form-item">
+        <label class="layui-form-label">权限</label>
+        <div class="layui-input-block">
+            {volist name="power" id="vo"}
+            <input type="checkbox" name="permission[]" lay-skin="primary" title="{$vo['title']}" value="{$key}" {if condition="$admin['permission']&$key"}checked=""{/if}>
+            {/volist}
+        </div>
+    </div>
+    {/if}
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit=""  lay-filter="*">立即提交</button>
+            <a href="{:url('admin/admin/showlist')}" class="layui-btn" >返回</a>
+        </div>
+    </div>
+</form>
+<script type="application/javascript">
+    layui.use('form', function(){
+        var form = layui.form;
+        var $    = layui.$;
+        form.on('submit(*)', function(data){
+            if($('#is_pwd').is(":checked")){
+                if($("#password").val().trim()==''){
+                    layer.tips('请填写密码', '#password');
+                    return false;
+                }
+            }
+            setTimeout(
+                function () {
+                    layer.load(0, { shade: [0.3, '#333'] });
+                },
+                10
+            )
+
+            return true
+        });
+
+        form.on('switch(passwd)', function(data){
+            if(data.elem.checked){
+                $('#pdiv').show(200)
+            }else{
+                $('#pdiv').hide(200)
+            }
+            return true
+        });
+
+
+    });
+
+
+
+</script>
+</body>
+</html>

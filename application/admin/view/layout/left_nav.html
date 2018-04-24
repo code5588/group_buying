@@ -1,0 +1,79 @@
+
+<div class="layui-side layui-bg-black kit-side">
+	<div class="layui-side-scroll">
+		<div class="kit-side-fold"><i class="fa fa-navicon" aria-hidden="true"></i></div>
+		<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+		<ul class="layui-nav layui-nav-tree" lay-filter="kitNavbar" kit-navbar>
+			<?php if(in_array('member/showlist',$auth)){  ?>
+			<li class="layui-nav-item">
+				<a class="" href="javascript:;" data-url="{:url('admin/member/showlist')}" data-icon="&#xe628;" data-title="报单列表" kit-target data-id='1'><i class="fa fa-plug"></i><span> 报单列表</span></a>
+			</li>
+			<?php } ?>
+			<?php if(in_array('member/search',$auth)){  ?>
+			<li class="layui-nav-item">
+				<a class="" href="javascript:;" data-url="{:url('admin/member/search')}" data-icon="&#xe628;" data-title="搜索" kit-target data-id='14'><i class="fa fa-plug"></i><span> 搜索</span></a>
+			</li>
+			<?php } ?>
+			<?php if(in_array('member/create',$auth)){  ?>
+			<li class="layui-nav-item">
+				<a class="" href="javascript:;" data-url="{:url('admin/member/create')}" data-icon="&#xe628;" data-title="报单" kit-target data-id='12'><i class="fa fa-plug"></i><span> 报单</span></a>
+			</li>
+			<?php } ?>
+			<?php if(in_array('transaction/car',$auth)){  ?>
+			<li class="layui-nav-item">
+				<a class="" href="javascript:;" data-url="{:url('admin/transaction/car')}" data-icon="&#xe628;" data-title="90天购车排单表" kit-target data-id='3' ><i class="fa fa-plug"></i><span> 90天购车排单表</span></a>
+			</li>
+			<?php } ?>
+			<?php if(in_array('transaction/house',$auth)){  ?>
+			<li class="layui-nav-item">
+				<a class="" href="javascript:;" data-url="{:url('admin/transaction/house')}" data-icon="&#xe628;" data-title="90天购房排单表" kit-target data-id='4' ><i class="fa fa-plug"></i><span> 90天购房排单表</span></a>
+			</li>
+			<?php } ?>
+			<?php if(in_array('transaction/all',$auth)){  ?>
+			<li class="layui-nav-item">
+				<a class="" href="javascript:;" data-url="{:url('admin/transaction/all')}" data-icon="&#xe628;" data-title="180天购车购房排单表" kit-target data-id='5' ><i class="fa fa-plug"></i><span> 180天购车购房排单表</span></a>
+			</li>
+			<?php } ?>
+			<?php if(in_array('share/showlist',$auth)){  ?>
+			<li class="layui-nav-item">
+				<a class="" href="javascript:;" data-url="{:url('admin/share/showList')}" data-icon="&#xe628;" data-title="分享统计" kit-target data-id='6' ><i class="fa fa-plug"></i><span> 分享统计</span></a>
+			</li>
+			<?php } ?>
+			<?php if(in_array('agency/showlist',$auth)){  ?>
+			<li class="layui-nav-item">
+				<a class="" href="javascript:;" data-url="{:url('admin/agency/showList')}" data-icon="&#xe628;" data-title="办事处" kit-target data-id='7' ><i class="fa fa-plug"></i><span> 办事处</span></a>
+			</li>
+			<?php } ?>
+			<?php if(in_array('reward/agenctshowlist',$auth)){  ?>
+			<li class="layui-nav-item">
+				<a class="" href="javascript:;" data-url="{:url('admin/reward/agenctshowlist')}" data-icon="&#xe628;" data-title="办事处奖励列表" kit-target data-id='13' ><i class="fa fa-plug"></i><span> 办事处奖励列表</span></a>
+			</li>
+			<?php } ?>
+			<?php if(in_array('userpoint/showlist',$auth)){  ?>
+			<li class="layui-nav-item">
+				<a class="" href="javascript:;" data-url="{:url('admin/userpoint/showList')}" data-icon="&#xe628;" data-title="180天用户积分" kit-target data-id='8' ><i class="fa fa-plug"></i><span>180天用户积分</span></a>
+			</li>
+			<?php } ?>
+			<?php if(in_array('transaction/conf',$auth)){  ?>
+			 <li class="layui-nav-item">
+				<a class="" href="javascript:;" data-url="{:url('admin/transaction/conf')}" data-icon="&#xe628;" data-title="参数配置" kit-target data-id='9' ><i class="fa fa-plug"></i><span> 参数配置</span></a>
+			</li>
+			<?php } ?>
+			<?php if(in_array('statistics/showlist',$auth)){  ?>
+			<li class="layui-nav-item">
+				<a class="" href="javascript:;" data-url="{:url('admin/statistics/showList')}" data-icon="&#xe628;" data-title="统计" kit-target data-id='10' ><i class="fa fa-plug"></i><span> 统计</span></a>
+			</li>
+			<?php } ?>
+			<?php if(in_array('admin/showlist',$auth)){  ?>
+			<li class="layui-nav-item">
+				<a class="" href="javascript:;" data-url="{:url('admin/admin/showList')}" data-icon="&#xe628;" data-title="管理员列表" kit-target data-id='11' ><i class="fa fa-plug"></i><span> 管理员列表</span></a>
+			</li>
+			<?php } ?>
+			<?php if(in_array('member/showlist',$auth)){  ?>
+			<li class="layui-nav-item">
+				<a class="" href="javascript:;" data-url="{:url('admin/member/todaylist')}" data-icon="&#xe628;" data-title="今日出单" kit-target data-id='15' ><i class="fa fa-plug"></i><span> 今日出单</span></a>
+			</li>
+			<?php } ?>
+		</ul>
+	</div>
+</div>

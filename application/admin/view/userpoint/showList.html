@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+{include file="./layout/head" /}
+
+<body class="kit-theme">
+
+<div class="demoTable">
+    <div class="layui-inline">
+        <input class="layui-input" name="id" id="demoReload" placeholder="搜索姓名" autocomplete="off">
+    </div>
+    <button class="layui-btn" data-type="reload">搜索</button>
+</div>
+
+<table class="layui-table" lay-data="{id:'idTest',height:'full', url:'{:url('admin/Userpoint/showList')}', page:true}" lay-filter="demo">
+    <thead>
+    <tr>
+        <th lay-data="{field:'id', width:120}">ID</th>
+        <th lay-data="{field:'yun_id', width:200}">云联惠ID</th>
+        <th lay-data="{field:'point', width:200}">积分</th>
+    </tr>
+    </thead>
+</table>
+<script>
+    layui.use('table', function() {
+        var table = layui.table;
+
+        var $ = layui.$, active = {
+            reload: function(){
+                var demoReload = $('#demoReload');
+
+                table.reload('idTest', {
+                    where: {
+                        search: demoReload.val(),
+                        id: demoReload.val()
+                    }
+                });
+            }
+        };
+
+        $('.demoTable .layui-btn').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+
+</script>
+</body>
+</html>

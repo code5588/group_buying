@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+{include file="./layout/head" /}
+<body class="kit-theme">
+<form class="layui-form" action="{:url('admin/transaction/conf')}" method="post">
+	<div class="layui-form-item">
+	        <label class="layui-form-label">90天购车日排单量</label>
+	        <div class="layui-input-inline">
+	            <input type="text" name="car"   value="{$conf.car}" class="layui-input">
+	        </div>
+	 </div>
+	 <div class="layui-form-item">
+	        <label class="layui-form-label">90天购房日排单量</label>
+	        <div class="layui-input-inline">
+	            <input type="text" name="house"   value="{$conf.house}" class="layui-input">
+	        </div>
+	 </div>
+	  <div class="layui-form-item">
+	        <label class="layui-form-label">180天购房购车日排单量</label>
+	        <div class="layui-input-inline">
+	            <input type="text" name="all"   value="{$conf.all}" class="layui-input">
+	        </div>
+	 </div>
+	 <div class="layui-form-item">
+	        <label class="layui-form-label">90天购车团购人数</label>
+	        <div class="layui-input-inline">
+	            <input type="text" name="carnumber"   value="{$conf.carnumber}" class="layui-input">
+	        </div>
+	 </div>
+	 <div class="layui-form-item">
+	        <label class="layui-form-label">90天购房团购人数</label>
+	        <div class="layui-input-inline">
+	            <input type="text" name="housenumber"   value="{$conf.housenumber}" class="layui-input">
+	        </div>
+	 </div>
+	 <div class="layui-form-item">
+	        <label class="layui-form-label">180天购房购车团购人数</label>
+	        <div class="layui-input-inline">
+	            <input type="text" name="allnumber"   value="{$conf.allnumber}" class="layui-input">
+	        </div>
+	 </div>
+	 <div class="layui-form-item">
+	        <label class="layui-form-label">分享积分百分比</label>
+	        <div class="layui-input-inline">
+	            <input type="text" name="point"   value="{$conf.point}" class="layui-input">
+	        </div>
+	 </div>
+	  <div class="layui-form-item">
+	        <label class="layui-form-label">办事处返利百分比1</label>
+	        <div class="layui-input-inline">
+	            <input type="text" name="agencypoint1"   value="{$conf.agencypoint1}" class="layui-input">
+	        </div>
+	 </div>
+	  <div class="layui-form-item">
+	        <label class="layui-form-label">办事处返利百分比2</label>
+	        <div class="layui-input-inline">
+	            <input type="text" name="agencypoint2"   value="{$conf.agencypoint2}" class="layui-input">
+	        </div>
+	 </div>
+	 <div class="layui-form-item">
+	        <div class="layui-input-block">
+	            <button class="layui-btn" lay-submit="" lay-filter="demo1">提交修改</button>
+	        </div>
+    	</div>
+</body>
+</html>

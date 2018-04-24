@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+{include file="./layout/head" /}
+
+<body class="kit-theme">
+<form class="layui-form" action="{:url('admin/admin/create')}" method="post">
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+            <input type="text" name="username" lay-verify="required" value="" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item" id="pdiv">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-block">
+            <input type="password" name="password"  lay-verify="required"  id="password" value="" placeholder="请输入密码" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">权限</label>
+        <div class="layui-input-block">
+            {volist name="power" id="vo"}
+            <input type="checkbox" name="permission[]" lay-skin="primary" title="{$vo['title']}" value="{$key}" checked="">
+            {/volist}
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit=""  lay-filter="*">立即提交</button>
+            <a href="{:url('admin/admin/showlist')}" class="layui-btn" >返回</a>
+        </div>
+    </div>
+
+</form>
+<script type="application/javascript">
+    layui.use('form', function(){
+        var form = layui.form;
+        form.on('submit(*)', function(data){
+            setTimeout(
+                function () {
+                    layer.load(0, { shade: [0.3, '#333'] });
+                },
+                10
+            )
+
+            return true
+        });
+    });
+
+
+
+</script>
+</body>
+</html>

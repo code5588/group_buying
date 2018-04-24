@@ -1,0 +1,62 @@
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>购房购车团购管理系统</title>
+	<link rel="stylesheet" href="/static/plugins/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/static/plugins/font-awesome/css/font-awesome.min.css" media="all" />
+	<link rel="stylesheet" href="/static/build/css/app.css" media="all" />
+	<link rel="stylesheet" href="/static/build/css/themes/default.css" media="all" id="skin" kit-skin />
+	<script src="/static/plugins/layui/layui.js"></script>
+	<script rel="stylesheet" src="/static/laydate/laydate.js"></script>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script>
+		var message;
+		var src = '/static/';
+		layui.config({
+			base: src+'build/js/',
+			version: '1.0.1'
+		}).use(['app', 'message'], function() {
+			var app = layui.app,
+				$ = layui.jquery,
+				layer = layui.layer;
+			//将message设置为全局以便子页面调用
+			message = layui.message;
+			//主入口
+			app.set({
+				type: 'iframe'
+			}).init();
+			$('#pay').on('click', function() {
+				layer.open({
+					title: false,
+					type: 1,
+					content: '<img src="'+src+'/src/images/pay.png" />',
+					area: ['500px', '250px'],
+					shadeClose: true
+				});
+			});
+			$('dl.skin > dd').on('click', function() {
+				var $that = $(this);
+				var skin = $that.children('a').data('skin');
+				switchSkin(skin);
+			});
+			var setSkin = function(value) {
+					layui.data('kit_skin', {
+						key: 'skin',
+						value: value
+					});
+				},
+				getSkinName = function() {
+					return layui.data('kit_skin').skin;
+				},
+				switchSkin = function(value) {
+					var _target = $('link[kit-skin]')[0];
+					_target.href = _target.href.substring(0, _target.href.lastIndexOf('/') + 1) + value + _target.href.substring(_target.href.lastIndexOf('.'));
+					setSkin(value);
+				},
+				initSkin = function() {
+					var skin = getSkinName();
+					switchSkin(skin === undefined ? 'default' : skin);
+				}();
+		});
+	</script>
+</head>
