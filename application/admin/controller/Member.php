@@ -773,7 +773,7 @@ class Member extends \app\admin\Auth
         $excelHandle = new \ExcelHandle();
         $excelHandle->exportExcel('报单-'.$searchTime,$cellArray,$data);
     }
-
+    //今日出单
     public function todayList(){
         $search = addslashes($this->request->get('search'));
         $type  = $this->request->param('type');
