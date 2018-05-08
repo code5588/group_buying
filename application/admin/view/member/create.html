@@ -246,7 +246,12 @@ function check(){
 			success:function(data){
 				if(data.code == 0){
 					 $("#yun_id").val(data.data[0].yun_id);
-					 $("#bind_mobile").val(data.data[0].bind_mobile);				
+					 $("#bind_mobile").val(data.data[0].bind_mobile);
+					 $("#bind_mobile").val(data.data[0].bind_mobile);
+					 $("#share_username").val(data.data[0].share_username);
+					 $("#share_yun_id").val(data.data[0].share_yun_id);
+					 $("#share_usermobile").val(data.data[0].share_usermobile);	
+					 
 				}
 				
 			}

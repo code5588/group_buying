@@ -231,7 +231,7 @@ class Member extends \app\admin\Auth
             $pagesize = $page * $limit;
 
             if (!empty($search)) {
-                $where .= " and ( m.name like '%".$search."%' or m.mobile like '%".$search."%' or m.yun_id like '%".$search."%' or m.share_username like '%".$search."%' ) ";
+                $where .= " and ( m.name like '%".$search."%' or m.bind_mobile like '%".$search."%' or m.yun_id like '%".$search."%' or m.share_username like '%".$search."%' ) ";
             }
             if(!empty($searchTime)){
                 $where .= " and from_unixtime(m.charge_date,'%Y-%m') = '".$searchTime."'";
@@ -304,7 +304,7 @@ class Member extends \app\admin\Auth
             $where = ' where 1 ';
 
             if (!empty($search)) {
-                $where .= " and ( m.name like '%".$search."%' or m.mobile like '%".$search."%' or m.yun_id like '%".$search."%' or m.share_username like '%".$search."%' ) ";
+                $where .= " and ( m.name like '%".$search."%' or m.bind_mobile like '%".$search."%' or m.yun_id like '%".$search."%' or m.share_username like '%".$search."%' ) ";
             }else{
                 return json(['code' => 0, 'count' => 0, 'data' => []]);
             }
@@ -376,7 +376,7 @@ class Member extends \app\admin\Auth
             $data = '';
             return json(['code' => $code, 'data' => $data]);
         }
-        $sql = "select yun_id,bind_mobile from `member` where name = '$name' and mobile = '$mobile' and yun_id <> '' limit 1";
+        $sql = "select yun_id,bind_mobile,share_username,share_yun_id,share_usermobile,agency_id from `member`  where name = '$name' and mobile = '$mobile' and yun_id <> '' limit 1";
         $userInfo = \think\Db::query($sql);
         if($userInfo){
             $code = 0;

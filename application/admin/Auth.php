@@ -78,10 +78,10 @@ class Auth extends \think\Controller
            'title' => '搜索',
            'src'   => 'member/search'
        ],
-        262144 =>[
-            'title' => '办事处奖励列表',
-            'src'   => 'reward/agenctshowlist'
-        ],
+//        262144 =>[
+//            'title' => '办事处奖励列表',
+//            'src'   => 'reward/agenctshowlist'
+//        ],
         524288 =>[
             'title' => '今日出单',
             'src'   => 'member/todaylist'

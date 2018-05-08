@@ -32,7 +32,7 @@ class Transaction extends \app\admin\Auth
 
             $where = ' where m.type = 1';
 			if (!empty($search)) {
-                $where .= " and m.name like '%".$search."%' or m.mobile like '%".$search."%' or m.yun_id like '%".$search."%' or m.share_username like '%".$search."%'";
+                $where .= " and m.name like '%".$search."%' or m.bind_mobile like '%".$search."%' or m.yun_id like '%".$search."%' or m.share_username like '%".$search."%'";
 			}
 			$page = $page > 0 ? $page - 1 : 0;
 
@@ -79,7 +79,7 @@ class Transaction extends \app\admin\Auth
 
             $where = ' where m.type = 2';
             if (!empty($search)) {
-                $where .= " and m.name like '%".$search."%' or m.mobile like '%".$search."%' or m.yun_id like '%".$search."%' or m.share_username like '%".$search."%'";
+                $where .= " and m.name like '%".$search."%' or m.bind_mobile like '%".$search."%' or m.yun_id like '%".$search."%' or m.share_username like '%".$search."%'";
             }
 
             $page = $page > 0 ? $page - 1 : 0;
@@ -127,7 +127,7 @@ class Transaction extends \app\admin\Auth
 
             $where = ' where m.type = 3';
             if (!empty($search)) {
-                $where .= " and m.name like '%".$search."%' or m.mobile like '%".$search."%' or m.yun_id like '%".$search."%' or m.share_username like '%".$search."%'";
+                $where .= " and m.name like '%".$search."%' or m.bind_mobile like '%".$search."%' or m.yun_id like '%".$search."%' or m.share_username like '%".$search."%'";
             }
 
             $page = $page > 0 ? $page - 1 : 0;
